@@ -1,1 +1,672 @@
-print ("Nigga Hub is best")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Negger hub", "Sentinel")
+
+-- Main
+local Main = Window:NewTab("Main")
+local MainSection = Tab:NewSection("Main")
+
+
+MainSection:NewButton("Pvp button", "You get esp aimlock and no recoil", function()
+local ammo = game.ReplicatedStorage.AmmoTypes
+
+for i,v in pairs(ammo:GetChildren()) do
+     v:SetAttribute("RecoilStrength", "0")
+end
+
+
+local oldZoom = game.Workspace.CurrentCamera.FieldOfView
+
+local Settings = {
+    ZoomTime = 0.2,
+    ZoomedAmount = 10
+}
+
+local function createZoom(time, amount)
+    local Tween_Info = TweenInfo.new(time, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut) 
+    local Tween = game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, Tween_Info, {FieldOfView = amount})
+    return Tween
+end
+
+game:GetService("UserInputService").InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.C then
+        createZoom(Settings.ZoomTime, Settings.ZoomedAmount):Play()
+    end
+end)
+
+game:GetService("UserInputService").InputEnded:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.C then
+        createZoom(Settings.ZoomTime, oldZoom):Play()
+    end
+end)
+
+local HyperEscapeAimbot = {
+	Enabled = true;
+	TeamCheck = false;
+	WallCheck = false;
+
+	Smoothing = 3;
+
+	AimPart = "Head";
+	Keybind = "MouseButton2";
+
+	Fov = 200;
+
+	ShowFov = true;
+	------------------------------------------------------------------------------------------------------------------------------------
+	Thickness = 1;
+
+	FovFillColor = Color3.fromRGB(100,0,100);
+	FovColor = Color3.fromRGB(100,0,100);
+
+	FovFillTransparency = 1;
+	FovTransparenct = 0;
+
+	IsAiming =false;
+}
+
+game:GetService("StarterGui"):SetCore("SendNotification", {Title = "https://discord.gg/FsApQ7YNTq", Text = "The Discord For More!"})
+--[[
+Common (may affect up to 1 in 10 people)
+
+  uneven heartbeat (palpitations)
+
+  mood changes or mood swings or changes in personality
+  
+
+Uncommon (may affect up to 1 in 100 people) thinking about or feeling like killing yourself
+
+  seeing, feeling, or hearing things that are not real, these are signs of psychosis
+
+  uncontrolled speech and body movements (Tourette's)
+
+  signs of allergy such as rash, itching or hives on the skin, swelling of the face, lips, tongue or other parts of the body, shortness of breath, wheezing or trouble breathing
+  
+
+Rare (may affect up to 1 in 1,000 people)
+
+  feeling unusually excited, over-active and un-inhibited (mania)
+
+
+
+Very rare (may affect up to 1 in 10,000 people)
+
+  heart attack
+
+  sudden death
+
+  suicidal attempt
+
+  fits (seizures, convulsions epilepsy)
+
+  skin peeling or purplish red patches
+
+  inflammation or blocked arteries in the brain
+
+  temporary paralysis or problems with movement and vision, difficulties in speech (these can be signs of problems with the blood vessels in your brain)
+
+  muscle spasms which you cannot control affecting your eyes, head, neck, body and nervous system
+
+  decrease in number of blood cells (red cells, white cells and platelets) which can make you more likely to get infections, and make you bleed and bruise more easily
+
+  a sudden increase in body temperature, very high blood pressure and severe convulsions ('Neuroleptic Malignant Syndrome'). It is not certain that this side effect is caused by methylphenidate or other drugs that may be taken in combination with methylphenidate.
+
+Not known (frequency cannot be estimated from the available data)
+
+  unwanted thoughts that keep coming back unexplained fainting, chest pain, shortness of breath (these can be signs of heart problems) // Sysguard being patched 
+
+  prolonged erections, sometimes painful or an increased number of erections.
+
+
+If you have any of the side effects above, see a doctor straight away.
+]]
+-- Nice and clean
+local AimbotV2 = Instance.new("ScreenGui")AimbotV2.Name = "AimbotV2" AimbotV2.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") AimbotV2.ZIndexBehavior = Enum.ZIndexBehavior.Sibling AimbotV2.ResetOnSpawn = false
+local HEAimbotV2 = Instance.new("Frame")HEAimbotV2.Name = "HEAimbotV2" HEAimbotV2.Parent = AimbotV2 HEAimbotV2.BackgroundColor3 = Color3.fromRGB(52, 52, 52) HEAimbotV2.BorderColor3 = Color3.fromRGB(255, 255, 255) HEAimbotV2.Position = UDim2.new(0.284624249, 0, 0.366314173, 0) HEAimbotV2.Size = UDim2.new(0, 241, 0, 291) HEAimbotV2.Active = true HEAimbotV2.Draggable =true 
+local Name = Instance.new("TextLabel")Name.Name = "Name" Name.Parent = HEAimbotV2 Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255) Name.BackgroundTransparency = 1.000 Name.BorderColor3 = Color3.fromRGB(0, 0, 0) Name.BorderSizePixel = 0 Name.Position = UDim2.new(0.0829875544, 0, -0.0406635068, 0) Name.Size = UDim2.new(0, 200, 0, 50) Name.Font = Enum.Font.Roboto Name.Text = "Hyper Escape | AimbotV3" Name.TextColor3 = Color3.fromRGB(17, 223, 255) Name.TextSize = 19.000
+local Frame = Instance.new("Frame")Frame.Parent = HEAimbotV2 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255) Frame.BackgroundTransparency = 1.000 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0) Frame.BorderSizePixel = 0 Frame.Position = UDim2.new(0.287999839, 0, 0.105447777, 0) Frame.Size = UDim2.new(0, 100, 0, 115) 
+local Enable_Aim = Instance.new("TextButton")Enable_Aim.Name = "Enable_Aim" Enable_Aim.Parent = Frame Enable_Aim.BackgroundColor3 = Color3.fromRGB(52, 52, 52) Enable_Aim.BorderColor3 = Color3.fromRGB(255, 255, 255) Enable_Aim.Position = UDim2.new(-1.59000003, 0, 1.0086956, 0) Enable_Aim.Size = UDim2.new(0, 122, 0, 24) Enable_Aim.Font = Enum.Font.Roboto Enable_Aim.Text = "Enable" Enable_Aim.TextColor3 = Color3.fromRGB(255, 255, 255) Enable_Aim.TextSize = 17.000
+local UIListLayout = Instance.new("UIListLayout")UIListLayout.Parent = Frame UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder UIListLayout.Padding = UDim.new(0, 5)
+local WallCheck = Instance.new("TextButton")WallCheck.Name = "WallCheck" WallCheck.Parent = Frame WallCheck.BackgroundColor3 = Color3.fromRGB(52, 52, 52) WallCheck.BorderColor3 = Color3.fromRGB(255, 255, 255) WallCheck.Position = UDim2.new(0.234439835, 0, 0.139479905, 0) WallCheck.Size = UDim2.new(0, 122, 0, 24) WallCheck.Font = Enum.Font.Roboto WallCheck.Text = "Wall Check" WallCheck.TextColor3 = Color3.fromRGB(255, 255, 255) WallCheck.TextSize = 17.000
+local Teamcheck = Instance.new("TextButton")Teamcheck.Name = "Teamcheck" Teamcheck.Parent = Frame Teamcheck.BackgroundColor3 = Color3.fromRGB(52, 52, 52) Teamcheck.BorderColor3 = Color3.fromRGB(255, 255, 255) Teamcheck.Position = UDim2.new(0.234439835, 0, 0.139479905, 0) Teamcheck.Size = UDim2.new(0, 122, 0, 24) Teamcheck.Font = Enum.Font.Roboto Teamcheck.Text = "Team check" Teamcheck.TextColor3 = Color3.fromRGB(255, 255, 255) Teamcheck.TextSize = 17.000
+local ShowFov = Instance.new("TextButton")ShowFov.Name = "ShowFov" ShowFov.Parent = Frame ShowFov.BackgroundColor3 = Color3.fromRGB(52, 52, 52) ShowFov.BorderColor3 = Color3.fromRGB(255, 255, 255) ShowFov.Position = UDim2.new(0.234439835, 0, 0.139479905, 0) ShowFov.Size = UDim2.new(0, 122, 0, 24) ShowFov.Font = Enum.Font.Roboto ShowFov.Text = "Show Fov" ShowFov.TextColor3 = Color3.fromRGB(255, 255, 255) ShowFov.TextSize = 17.000
+local Hitpart = Instance.new("TextButton")Hitpart.Name = "Hitpart" Hitpart.Parent = Frame Hitpart.BackgroundColor3 = Color3.fromRGB(52, 52, 52) Hitpart.BorderColor3 = Color3.fromRGB(255, 255, 255) Hitpart.Position = UDim2.new(-1.59000003, 0, 1.0086956, 0) Hitpart.Size = UDim2.new(0, 122, 0, 24) Hitpart.Font = Enum.Font.Roboto Hitpart.Text = "HEAD, torso" Hitpart.TextColor3 = Color3.fromRGB(255, 255, 255) Hitpart.TextSize = 17.000
+local TextLabel = Instance.new("TextLabel")TextLabel.Parent = Frame TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255) TextLabel.BackgroundTransparency = 1.000 TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0) TextLabel.BorderSizePixel = 0 TextLabel.Position = UDim2.new(0.0747231692, 0, -0.0288301352, 0) TextLabel.Size = UDim2.new(0, 100, 0, 17) TextLabel.Font = Enum.Font.Roboto TextLabel.Text = "Smoothing " TextLabel.TextColor3 = Color3.fromRGB(17, 223, 255) TextLabel.TextSize = 17.000
+local Smoothing_Num = Instance.new("TextBox")Smoothing_Num.Name = "Smoothing_Num" Smoothing_Num.Parent = Frame Smoothing_Num.BackgroundColor3 = Color3.fromRGB(52, 52, 52) Smoothing_Num.BorderColor3 = Color3.fromRGB(255, 255, 255) Smoothing_Num.Position = UDim2.new(-0.109999999, 0, 0.782608688, 0) Smoothing_Num.Size = UDim2.new(0, 122, 0, 24) Smoothing_Num.ClearTextOnFocus = false Smoothing_Num.Font = Enum.Font.Roboto Smoothing_Num.PlaceholderText = "3 - 0" Smoothing_Num.Text = "0" Smoothing_Num.TextColor3 = Color3.fromRGB(255, 255, 255) Smoothing_Num.TextSize = 14.000
+local TextLabel_2 = Instance.new("TextLabel")TextLabel_2.Parent = Frame TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255) TextLabel_2.BackgroundTransparency = 1.000 TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0) TextLabel_2.BorderSizePixel = 0 TextLabel_2.Position = UDim2.new(0.0747231692, 0, -0.0288301352, 0) TextLabel_2.Size = UDim2.new(0, 100, 0, 17) TextLabel_2.Font = Enum.Font.Roboto TextLabel_2.Text = "Fov" TextLabel_2.TextColor3 = Color3.fromRGB(17, 223, 255) TextLabel_2.TextSize = 17.000
+local FovNumb = Instance.new("TextBox")FovNumb.Name = "FovNumb" FovNumb.Parent = Frame FovNumb.BackgroundColor3 = Color3.fromRGB(52, 52, 52) FovNumb.BorderColor3 = Color3.fromRGB(255, 255, 255) FovNumb.Position = UDim2.new(-0.109999999, 0, 0.782608688, 0) FovNumb.Size = UDim2.new(0, 122, 0, 24) FovNumb.ClearTextOnFocus = false FovNumb.Font = Enum.Font.Roboto FovNumb.PlaceholderText = "350" FovNumb.Text = "200" game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Hope you enjoy!", Text = "By Mick gordon"}) FovNumb.TextColor3 = Color3.fromRGB(255, 255, 255) FovNumb.TextSize = 14.000
+local TextBox = Instance.new("TextBox")TextBox.Parent = HEAimbotV2 TextBox.Active = false TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255) TextBox.BackgroundTransparency = 1.000 TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0) TextBox.BorderSizePixel = 0 TextBox.Position = UDim2.new(0.0829875544, 0, 0.929825902, 0) TextBox.Size = UDim2.new(0, 200, 0, 23) TextBox.ClearTextOnFocus = false TextBox.Font = Enum.Font.Roboto TextBox.PlaceholderText = "https://discord.gg/FsApQ7YNTq" TextBox.Text = "https://discord.gg/FsApQ7YNTq -ClickMe" TextBox.TextColor3 = Color3.fromRGB(255, 255, 255) TextBox.TextSize = 14.000
+Enable_Aim.MouseButton1Click:Connect(function() if HyperEscapeAimbot.Enabled == true then HyperEscapeAimbot.Enabled = false Enable_Aim.BackgroundColor3 = Color3.fromRGB(52,52,52) else HyperEscapeAimbot.Enabled= true Enable_Aim.BackgroundColor3 = Color3.fromRGB(2, 54, 8) end end) WallCheck.MouseButton1Click:Connect(function() if HyperEscapeAimbot.WallCheck == true then HyperEscapeAimbot.WallCheck = false WallCheck.BackgroundColor3 = Color3.fromRGB(52,52,52) else HyperEscapeAimbot.WallCheck = true WallCheck.BackgroundColor3 = Color3.fromRGB(2, 54, 8) end end) Teamcheck.MouseButton1Click:Connect(function() if HyperEscapeAimbot.TeamCheck == true then HyperEscapeAimbot.TeamCheck = false Teamcheck.BackgroundColor3 = Color3.fromRGB(52,52,52) else HyperEscapeAimbot.TeamCheck = true Teamcheck.BackgroundColor3 = Color3.fromRGB(2, 54, 8) end end) ShowFov.MouseButton1Click:Connect(function() if HyperEscapeAimbot.ShowFov ==true then HyperEscapeAimbot.ShowFov = false ShowFov.BackgroundColor3 = Color3.fromRGB(52,52,52) else HyperEscapeAimbot.ShowFov = true ShowFov.BackgroundColor3 = Color3.fromRGB(2, 54, 8) end end) Hitpart.MouseButton1Click:Connect(function() if HyperEscapeAimbot.AimPart == "Head" then Hitpart.Text = "head, Torso" HyperEscapeAimbot.AimPart = "HumanoidRootPart" else Hitpart.Text = "HEAD, torso" HyperEscapeAimbot.AimPart = "Head" end end)
+local Fov = Instance.new("ScreenGui")Fov.Name = "Fov" Fov.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") Fov.ZIndexBehavior = Enum.ZIndexBehavior.Sibling Fov.ResetOnSpawn = false-- i miss you synapse fov
+local FOVFFrame = Instance.new("Frame")FOVFFrame.Parent = Fov FOVFFrame.Name = "FOVFFrame" FOVFFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255) FOVFFrame.BorderColor3 = Color3.fromRGB(0, 0, 0) FOVFFrame.BorderSizePixel = 0 FOVFFrame.BackgroundTransparency = 1 FOVFFrame.AnchorPoint = Vector2.new(0.5, 0.5) FOVFFrame.Position = UDim2.new(0.5, 0,0.5, 0) FOVFFrame.Size = UDim2.new(0, HyperEscapeAimbot.Fov, 0, HyperEscapeAimbot.Fov) FOVFFrame.BackgroundTransparency = 1 
+local UICorner = Instance.new("UICorner")UICorner.CornerRadius = UDim.new(1, 0) UICorner.Parent = FOVFFrame 
+local UIStroke = Instance.new("UIStroke")UIStroke.Color = Color3.fromRGB(100,0,100) UIStroke.Parent = FOVFFrame UIStroke.Thickness = 1 UIStroke.ApplyStrokeMode = "Border"
+
+local PLAYER = game.Players.LocalPlayer
+local CurrentCam  = game.Workspace.CurrentCamera
+local UIS = game:GetService("UserInputService")
+local l_character = PLAYER.Character or PLAYER.CharacterAdded:wait()
+local WorldToViewportPoint = CurrentCam.WorldToViewportPoint
+local mouseLocation = UIS.GetMouseLocation
+
+
+function isVisible(p, ...)
+	if not (HyperEscapeAimbot.WallCheck == true) then
+		return true
+	end 
+	return #CurrentCam:GetPartsObscuringTarget({ p }, { CurrentCam, PLAYER.Character, ... }) == 0 
+end
+
+function CameraGetClosestToMouse(Fov)
+	local AimFov = Fov
+	local targetPos = nil
+
+	for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+		if v ~= PLAYER then
+			if HyperEscapeAimbot.TeamCheck == true then
+				if v.Character and v.Character:FindFirstChild(HyperEscapeAimbot.AimPart) and v.Character.Humanoid and v.Character.Humanoid.Health > 0 and not (v.Team == PLAYER.Team) then
+					local screen_pos, on_screen = WorldToViewportPoint(CurrentCam, v.Character[HyperEscapeAimbot.AimPart].Position)
+					local screen_pos_2D = Vector2.new(screen_pos.X, screen_pos.Y)
+					local new_magnitude = (screen_pos_2D - mouseLocation(UIS)).Magnitude
+					if on_screen and new_magnitude < AimFov and isVisible(v.Character[HyperEscapeAimbot.AimPart].Position, v.Character.Head.Parent) then
+						AimFov = new_magnitude
+						targetPos = v
+					end
+				end
+			else
+				if v.Character and v.Character:FindFirstChild(HyperEscapeAimbot.AimPart) and v.Character.Humanoid and v.Character.Humanoid.Health > 0 then
+					local screen_pos, on_screen = WorldToViewportPoint(CurrentCam, v.Character[HyperEscapeAimbot.AimPart].Position)
+					local screen_pos_2D = Vector2.new(screen_pos.X, screen_pos.Y)
+					local new_magnitude = (screen_pos_2D - mouseLocation(UIS)).Magnitude
+					if on_screen and new_magnitude < AimFov and isVisible(v.Character[HyperEscapeAimbot.AimPart].Position, v.Character.Head.Parent) then
+						AimFov = new_magnitude
+						targetPos = v
+					end
+				end
+			end
+		end
+	end
+	return targetPos
+end
+
+
+local function aimAt(pos, smooth)
+	local AimPart = pos.Character:FindFirstChild(HyperEscapeAimbot.AimPart)
+	if AimPart then
+		local LookAt = nil
+		local Distance = math.floor(0.5+(PLAYER.Character:FindFirstChild"HumanoidRootPart".Position - pos.Character:FindFirstChild"HumanoidRootPart".Position).magnitude)
+		if Distance > 100  then
+			local distChangeBig = Distance / 10
+			LookAt = CurrentCam.CFrame:PointToWorldSpace(Vector3.new(0,0,-smooth * distChangeBig)):Lerp(AimPart.Position,.01) -- No one esle do camera smoothing ? tf
+		else
+			local distChangeSmall = Distance / 10
+			LookAt = CurrentCam.CFrame:PointToWorldSpace(Vector3.new(0,0,-smooth * distChangeSmall)):Lerp(AimPart.Position,.01) -- No one esle do camera smoothing ? tf
+		end
+		CurrentCam.CFrame = CFrame.lookAt(CurrentCam.CFrame.Position, LookAt)
+	end
+end
+
+game:GetService('RunService').RenderStepped:connect(function()
+	if HyperEscapeAimbot.Enabled == true then 
+		if UIS:IsMouseButtonPressed(Enum.UserInputType[HyperEscapeAimbot.Keybind]) then
+			local _pos = CameraGetClosestToMouse(HyperEscapeAimbot.Fov)
+			if _pos then
+				aimAt(_pos, HyperEscapeAimbot.Smoothing)
+			end
+		end
+	end 
+
+	if not (FovNumb.Text == "") then
+		HyperEscapeAimbot.Fov = tonumber(FovNumb.Text)
+	end
+	if not (Smoothing_Num.Text == "") then
+		HyperEscapeAimbot.Smoothing = tonumber(Smoothing_Num.Text)
+	end
+
+	local acc = HyperEscapeAimbot.Smoothing / 2	
+	local posd = UIS:GetMouseLocation() 
+	FOVFFrame.Position = UDim2.new(0, posd.X, 0, posd.Y - 36)
+	FOVFFrame.Size = UDim2.new(0, HyperEscapeAimbot.Fov + acc, 0, HyperEscapeAimbot.Fov + acc)
+	FOVFFrame.Visible = HyperEscapeAimbot.ShowFov
+	FOVFFrame.BackgroundColor3 = HyperEscapeAimbot.FovFillColor
+	FOVFFrame.Transparency = HyperEscapeAimbot.FovFillTransparency
+
+	UIStroke.Color = HyperEscapeAimbot.FovFillColor
+	UIStroke.Transparency = HyperEscapeAimbot.FovTransparenct
+	UIStroke.Thickness = HyperEscapeAimbot.Thickness
+end)
+
+--[[
+A distribution of https://wearedevs.net/scripts
+Created August 17, 2021, Last updated August 17, 2021
+
+Description: Draws boxes around each player.
+
+Credits to "Real Panda" for their ESP library
+
+Instruction: Edit the settings as desired below and execute the script.
+
+Settings: 
+Replace "nil" with "true" to enable the setting, or "false" to disable the setting. Without the quotes. 
+If you do not change "nil", the defaults will take place.
+]]
+_G.WRDESPEnabled = nil --Enables the ESP (Defaults to true)
+_G.WRDESPBoxes = nil --Draws boxes around other players (Defaults to true)
+_G.WRDESPTeamColors = nil --Distinguish different teams by their team color. If the game sets one. (Defaults to true)
+_G.WRDESPTracers = nil --Displays lines leading to other players (Defaults to false)
+_G.WRDESPNames = nil --Displays the names of the players within the ESP box (Defaults to true)
+
+--Dont edit below
+
+--Only ever load the script once
+if not _G.WRDESPLoaded then    
+    ----[[ First- Load Kiriot ESP Library ]]----
+
+    --Settings--
+    local ESP = {
+        Enabled = false,
+        Boxes = true,
+        BoxShift = CFrame.new(0,-1.5,0),
+        BoxSize = Vector3.new(4,6,0),
+        Color = Color3.fromRGB(255, 170, 0),
+        FaceCamera = false,
+        Names = true,
+        TeamColor = true,
+        Thickness = 2,
+        AttachShift = 1,
+        TeamMates = true,
+        Players = true,
+        
+        Objects = setmetatable({}, {__mode="kv"}),
+        Overrides = {}
+    }
+
+    --Declarations--
+    local cam = workspace.CurrentCamera
+    local plrs = game:GetService("Players")
+    local plr = plrs.LocalPlayer
+    local mouse = plr:GetMouse()
+
+    local V3new = Vector3.new
+    local WorldToViewportPoint = cam.WorldToViewportPoint
+
+    --Functions--
+    local function Draw(obj, props)
+        local new = Drawing.new(obj)
+        
+        props = props or {}
+        for i,v in pairs(props) do
+            new[i] = v
+        end
+        return new
+    end
+
+    function ESP:GetTeam(p)
+        local ov = self.Overrides.GetTeam
+        if ov then
+            return ov(p)
+        end
+        
+        return p and p.Team
+    end
+
+    function ESP:IsTeamMate(p)
+        local ov = self.Overrides.IsTeamMate
+        if ov then
+            return ov(p)
+        end
+        
+        return self:GetTeam(p) == self:GetTeam(plr)
+    end
+
+    function ESP:GetColor(obj)
+        local ov = self.Overrides.GetColor
+        if ov then
+            return ov(obj)
+        end
+        local p = self:GetPlrFromChar(obj)
+        return p and self.TeamColor and p.Team and p.Team.TeamColor.Color or self.Color
+    end
+
+    function ESP:GetPlrFromChar(char)
+        local ov = self.Overrides.GetPlrFromChar
+        if ov then
+            return ov(char)
+        end
+        
+        return plrs:GetPlayerFromCharacter(char)
+    end
+
+    function ESP:Toggle(bool)
+        self.Enabled = bool
+        if not bool then
+            for i,v in pairs(self.Objects) do
+                if v.Type == "Box" then --fov circle etc
+                    if v.Temporary then
+                        v:Remove()
+                    else
+                        for i,v in pairs(v.Components) do
+                            v.Visible = false
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    function ESP:GetBox(obj)
+        return self.Objects[obj]
+    end
+
+    function ESP:AddObjectListener(parent, options)
+        local function NewListener(c)
+            if type(options.Type) == "string" and c:IsA(options.Type) or options.Type == nil then
+                if type(options.Name) == "string" and c.Name == options.Name or options.Name == nil then
+                    if not options.Validator or options.Validator(c) then
+                        local box = ESP:Add(c, {
+                            PrimaryPart = type(options.PrimaryPart) == "string" and c:WaitForChild(options.PrimaryPart) or type(options.PrimaryPart) == "function" and options.PrimaryPart(c),
+                            Color = type(options.Color) == "function" and options.Color(c) or options.Color,
+                            ColorDynamic = options.ColorDynamic,
+                            Name = type(options.CustomName) == "function" and options.CustomName(c) or options.CustomName,
+                            IsEnabled = options.IsEnabled,
+                            RenderInNil = options.RenderInNil
+                        })
+                        --TODO: add a better way of passing options
+                        if options.OnAdded then
+                            coroutine.wrap(options.OnAdded)(box)
+                        end
+                    end
+                end
+            end
+        end
+
+        if options.Recursive then
+            parent.DescendantAdded:Connect(NewListener)
+            for i,v in pairs(parent:GetDescendants()) do
+                coroutine.wrap(NewListener)(v)
+            end
+        else
+            parent.ChildAdded:Connect(NewListener)
+            for i,v in pairs(parent:GetChildren()) do
+                coroutine.wrap(NewListener)(v)
+            end
+        end
+    end
+
+    local boxBase = {}
+    boxBase.__index = boxBase
+
+    function boxBase:Remove()
+        ESP.Objects[self.Object] = nil
+        for i,v in pairs(self.Components) do
+            v.Visible = false
+            v:Remove()
+            self.Components[i] = nil
+        end
+    end
+
+    function boxBase:Update()
+        if not self.PrimaryPart then
+            --warn("not supposed to print", self.Object)
+            return self:Remove()
+        end
+
+        local color
+        if ESP.Highlighted == self.Object then
+        color = ESP.HighlightColor
+        else
+            color = self.Color or self.ColorDynamic and self:ColorDynamic() or ESP:GetColor(self.Object) or ESP.Color
+        end
+
+        local allow = true
+        if ESP.Overrides.UpdateAllow and not ESP.Overrides.UpdateAllow(self) then
+            allow = false
+        end
+        if self.Player and not ESP.TeamMates and ESP:IsTeamMate(self.Player) then
+            allow = false
+        end
+        if self.Player and not ESP.Players then
+            allow = false
+        end
+        if self.IsEnabled and (type(self.IsEnabled) == "string" and not ESP[self.IsEnabled] or type(self.IsEnabled) == "function" and not self:IsEnabled()) then
+            allow = false
+        end
+        if not workspace:IsAncestorOf(self.PrimaryPart) and not self.RenderInNil then
+            allow = false
+        end
+
+        if not allow then
+            for i,v in pairs(self.Components) do
+                v.Visible = false
+            end
+            return
+        end
+
+        if ESP.Highlighted == self.Object then
+            color = ESP.HighlightColor
+        end
+
+        --calculations--
+        local cf = self.PrimaryPart.CFrame
+        if ESP.FaceCamera then
+            cf = CFrame.new(cf.p, cam.CFrame.p)
+        end
+        local size = self.Size
+        local locs = {
+            TopLeft = cf * ESP.BoxShift * CFrame.new(size.X/2,size.Y/2,0),
+            TopRight = cf * ESP.BoxShift * CFrame.new(-size.X/2,size.Y/2,0),
+            BottomLeft = cf * ESP.BoxShift * CFrame.new(size.X/2,-size.Y/2,0),
+            BottomRight = cf * ESP.BoxShift * CFrame.new(-size.X/2,-size.Y/2,0),
+            TagPos = cf * ESP.BoxShift * CFrame.new(0,size.Y/2,0),
+            Torso = cf * ESP.BoxShift
+        }
+
+        if ESP.Boxes then
+            local TopLeft, Vis1 = WorldToViewportPoint(cam, locs.TopLeft.p)
+            local TopRight, Vis2 = WorldToViewportPoint(cam, locs.TopRight.p)
+            local BottomLeft, Vis3 = WorldToViewportPoint(cam, locs.BottomLeft.p)
+            local BottomRight, Vis4 = WorldToViewportPoint(cam, locs.BottomRight.p)
+
+            if self.Components.Quad then
+                if Vis1 or Vis2 or Vis3 or Vis4 then
+                    self.Components.Quad.Visible = true
+                    self.Components.Quad.PointA = Vector2.new(TopRight.X, TopRight.Y)
+                    self.Components.Quad.PointB = Vector2.new(TopLeft.X, TopLeft.Y)
+                    self.Components.Quad.PointC = Vector2.new(BottomLeft.X, BottomLeft.Y)
+                    self.Components.Quad.PointD = Vector2.new(BottomRight.X, BottomRight.Y)
+                    self.Components.Quad.Color = color
+                else
+                    self.Components.Quad.Visible = false
+                end
+            end
+        else
+            self.Components.Quad.Visible = false
+        end
+
+        if ESP.Names then
+            local TagPos, Vis5 = WorldToViewportPoint(cam, locs.TagPos.p)
+            
+            if Vis5 then
+                self.Components.Name.Visible = true
+                self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y)
+                self.Components.Name.Text = self.Name
+                self.Components.Name.Color = color
+                
+                self.Components.Distance.Visible = true
+                self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
+                self.Components.Distance.Text = math.floor((cam.CFrame.p - cf.p).magnitude) .."m away"
+                self.Components.Distance.Color = color
+            else
+                self.Components.Name.Visible = false
+                self.Components.Distance.Visible = false
+            end
+        else
+            self.Components.Name.Visible = false
+            self.Components.Distance.Visible = false
+        end
+        
+        if ESP.Tracers then
+            local TorsoPos, Vis6 = WorldToViewportPoint(cam, locs.Torso.p)
+
+            if Vis6 then
+                self.Components.Tracer.Visible = true
+                self.Components.Tracer.From = Vector2.new(TorsoPos.X, TorsoPos.Y)
+                self.Components.Tracer.To = Vector2.new(cam.ViewportSize.X/2,cam.ViewportSize.Y/ESP.AttachShift)
+                self.Components.Tracer.Color = color
+            else
+                self.Components.Tracer.Visible = false
+            end
+        else
+            self.Components.Tracer.Visible = false
+        end
+    end
+
+    function ESP:Add(obj, options)
+        if not obj.Parent and not options.RenderInNil then
+            return warn(obj, "has no parent")
+        end
+
+        local box = setmetatable({
+            Name = options.Name or obj.Name,
+            Type = "Box",
+            Color = options.Color --[[or self:GetColor(obj)]],
+            Size = options.Size or self.BoxSize,
+            Object = obj,
+            Player = options.Player or plrs:GetPlayerFromCharacter(obj),
+            PrimaryPart = options.PrimaryPart or obj.ClassName == "Model" and (obj.PrimaryPart or obj:FindFirstChild("HumanoidRootPart") or obj:FindFirstChildWhichIsA("BasePart")) or obj:IsA("BasePart") and obj,
+            Components = {},
+            IsEnabled = options.IsEnabled,
+            Temporary = options.Temporary,
+            ColorDynamic = options.ColorDynamic,
+            RenderInNil = options.RenderInNil
+        }, boxBase)
+
+        if self:GetBox(obj) then
+            self:GetBox(obj):Remove()
+        end
+
+        box.Components["Quad"] = Draw("Quad", {
+            Thickness = self.Thickness,
+            Color = color,
+            Transparency = 1,
+            Filled = false,
+            Visible = self.Enabled and self.Boxes
+        })
+        box.Components["Name"] = Draw("Text", {
+            Text = box.Name,
+            Color = box.Color,
+            Center = true,
+            Outline = true,
+            Size = 19,
+            Visible = self.Enabled and self.Names
+        })
+        box.Components["Distance"] = Draw("Text", {
+            Color = box.Color,
+            Center = true,
+            Outline = true,
+            Size = 19,
+            Visible = self.Enabled and self.Names
+        })
+        
+        box.Components["Tracer"] = Draw("Line", {
+            Thickness = ESP.Thickness,
+            Color = box.Color,
+            Transparency = 1,
+            Visible = self.Enabled and self.Tracers
+        })
+        self.Objects[obj] = box
+        
+        obj.AncestryChanged:Connect(function(_, parent)
+            if parent == nil and ESP.AutoRemove ~= false then
+                box:Remove()
+            end
+        end)
+        obj:GetPropertyChangedSignal("Parent"):Connect(function()
+            if obj.Parent == nil and ESP.AutoRemove ~= false then
+                box:Remove()
+            end
+        end)
+
+        local hum = obj:FindFirstChildOfClass("Humanoid")
+        if hum then
+            hum.Died:Connect(function()
+                if ESP.AutoRemove ~= false then
+                    box:Remove()
+                end
+            end)
+        end
+
+        return box
+    end
+
+    local function CharAdded(char)
+        local p = plrs:GetPlayerFromCharacter(char)
+        if not char:FindFirstChild("HumanoidRootPart") then
+            local ev
+            ev = char.ChildAdded:Connect(function(c)
+                if c.Name == "HumanoidRootPart" then
+                    ev:Disconnect()
+                    ESP:Add(char, {
+                        Name = p.Name,
+                        Player = p,
+                        PrimaryPart = c
+                    })
+                end
+            end)
+        else
+            ESP:Add(char, {
+                Name = p.Name,
+                Player = p,
+                PrimaryPart = char.HumanoidRootPart
+            })
+        end
+    end
+    local function PlayerAdded(p)
+        p.CharacterAdded:Connect(CharAdded)
+        if p.Character then
+            coroutine.wrap(CharAdded)(p.Character)
+        end
+    end
+    plrs.PlayerAdded:Connect(PlayerAdded)
+    for i,v in pairs(plrs:GetPlayers()) do
+        if v ~= plr then
+            PlayerAdded(v)
+        end
+    end
+
+    game:GetService("RunService").RenderStepped:Connect(function()
+        cam = workspace.CurrentCamera
+        for i,v in (ESP.Enabled and pairs or ipairs)(ESP.Objects) do
+            if v.Update then
+                local s,e = pcall(v.Update, v)
+                if not s then warn("[EU]", e, v.Object:GetFullName()) end
+            end
+        end
+    end)
+
+    ----[[ Now Begins WRD's modification for implementation ]]----
+
+    --Sets defaults where required
+    if _G.WRDESPEnabled == nil then _G.WRDESPEnabled = true end
+    if _G.WRDESPBoxes == nil then _G.WRDESPBoxes = true end
+    if _G.WRDESPTeamColors == nil then _G.WRDESPTeamColors = true end
+    if _G.WRDESPTracers == nil then _G.WRDESPTracers = false end
+    if _G.WRDESPNames == nil then _G.WRDESPNames = true end
+	
+	--Hacky way to keep up with setting changes
+    while wait(.1) do
+        ESP:Toggle(_G.WRDESPEnabled or false)
+        ESP.Boxes = _G.WRDESPBoxes or false
+        ESP.TeamColors = _G.WRDESPTeamColors or false
+        ESP.Tracers = _G.WRDESPTracers or false
+        ESP.Names = _G.WRDESPNames or false
+    end
+
+    _G.WRDESPLoaded = true
+end
+
+local ammo = game.ReplicatedStorage.AmmoTypes
+
+for i,v in pairs(ammo:GetChildren()) do
+     v:SetAttribute("RecoilStrength", "0")
+end
+end)
