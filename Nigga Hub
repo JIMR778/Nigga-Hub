@@ -2875,6 +2875,12 @@ end)
 
 
 
+Main2Section:NewButton("BBC Hub", "you get swimhub", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/main/BBC%20Hub"))()
+end)
+
+
+
 
 
 Main2Section:NewButton("No Recoil", "You get No Recoil", function()
