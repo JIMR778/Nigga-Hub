@@ -2849,6 +2849,10 @@ game.Lighting.Ambient = Color3.fromRGB(178, 178, 178)
         da.Enabled= true
 end)
 
+MainSection:NewButton("Monkey Hub", "You get Monkey Hub", function()
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/orca/master/public/latest.lua"))()
+end)
+
 
 
 
