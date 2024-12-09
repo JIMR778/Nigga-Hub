@@ -1,0 +1,115 @@
+pcall(function()
+    getgenv().inventoryviewer = nil
+end)
+
+getgenv().inventoryviewer = {}
+local Environment = getgenv().inventoryviewer
+
+local inCamera = workspace.CurrentCamera
+local inRunService = game:GetService("RunService")
+local inUIS = game:GetService("UserInputService")
+local inRepStorage = game:GetService("ReplicatedStorage")
+local inEntities = game:GetService("Players")
+local inLocalPlayer = inEntities.LocalPlayer
+local inMouse = inLocalPlayer:GetMouse()
+
+local InventoryUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/RelkzzRebranded/agogogogos/main/inventoryUi.lua"))()
+
+local INVENTORYINSTANCES = {
+    MainFrame = InventoryUI.MainFrame,
+    VictimText = InventoryUI.MainFrame.VictimName,
+    InventoryText = InventoryUI.MainFrame.List
+}
+InventoryUI.Parent = gethui()
+
+local PlayersFolder = inRepStorage.Players
+
+local Title = [[Brickmane]]
+local Desc = [[This is an inventory viewer but simple]]
+
+Environment.Settings = {
+    Enabled = false,
+    TriggerKey = 'X',
+    Radius = 2000
+}
+
+inUIS.InputBegan:Connect(function(Input, process)
+    if process then return end
+
+    if Input.KeyCode == Enum.KeyCode[Environment.Settings.TriggerKey] then
+        Environment.Settings.Enabled = not Environment.Settings.Enabled
+    end
+end)
+
+local function LoadInventoryViewer()
+    inRunService.RenderStepped:Connect(function()
+        local dist = math.huge
+        local closest_character = nil
+    
+        if Environment.Settings.Enabled then
+            for _,v in next , inEntities:GetChildren() do
+                pcall(function()
+                    if v ~= inLocalPlayer and
+                    v ~= nil and
+                    v.Character:FindFirstChild('HumanoidRootPart') and
+                    v.Character:FindFirstChild('Humanoid') and
+                    v.Character.Humanoid.Health > 0 then
+                        local char = v.Character
+                        local char_part_pos, onscreen = inCamera:WorldToViewportPoint(char.HumanoidRootPart.Position)
+        
+                        if onscreen then
+                            local magnitude = (Vector2.new(inMouse.X, inMouse.Y) - Vector2.new(char_part_pos.X, char_part_pos.Y)).Magnitude
+        
+                            if magnitude < dist and magnitude < Environment.Settings.Radius then
+                                dist = magnitude
+                                closest_character = char
+                            end
+                        end
+                    end
+                end)
+            end
+    
+            if closest_character ~= nil and
+            closest_character.Parent and
+            closest_character:FindFirstChild('HumanoidRootPart') and
+            closest_character:FindFirstChild('Humanoid') and
+            closest_character.Humanoid.Health > 0 then
+                InventoryUI.Enabled = true
+
+                local playerInventory = PlayersFolder[closest_character.Name] and PlayersFolder[closest_character.Name].Inventory
+                local playerClothing = PlayersFolder[closest_character.Name] and PlayersFolder[closest_character.Name].Clothing
+
+                local PrimaryLoot = ""
+                local WearablesLoot = ""
+                if playerInventory and playerClothing then
+                    for _, item in pairs(playerInventory:GetChildren()) do
+                        PrimaryLoot ..=  item.Name .. "\n"
+                    end
+                
+                    for _, clothes in pairs(playerClothing:GetChildren()) do
+                        WearablesLoot ..= clothes.Name .. '\n'
+                    end
+                end
+
+                if PrimaryLoot ~= "" then
+                    PrimaryLoot = PrimaryLoot:sub(1, -2) 
+                else
+                    PrimaryLoot = "NO WEAPONS"
+                end
+
+                if WearablesLoot ~= "" then
+                    WearablesLoot = WearablesLoot:sub(1, -2) 
+                else
+                    WearablesLoot = "NAKED"
+                end
+
+                INVENTORYINSTANCES.VictimText.Text = closest_character.Name
+                INVENTORYINSTANCES.InventoryText.Text = `PRIMARY:\n{PrimaryLoot}\nWearables:\n{WearablesLoot}`
+            else
+                InventoryUI.Enabled = false
+            end
+        end
+    end)    
+end
+
+LoadInventoryViewer(); print('INVENTORY VIEWER LOADED')
