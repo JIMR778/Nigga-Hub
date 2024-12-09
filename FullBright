@@ -1,0 +1,12 @@
+game.Lighting.Ambient = Color3.fromRGB(178, 178, 178)
+        if game:GetService("Lighting").Sky then
+            game:GetService("Lighting").Sky:Destroy()
+        end
+        game:GetService("Lighting").GlobalShadows = false
+        game:GetService("Lighting").FogEnd = 14881488
+        local da = Instance.new("ColorCorrectionEffect")
+        da.Name= "da"
+        da.Brightness= 0.3
+        da.Contrast= 0
+        da.Saturation= 0
+        da.Enabled= true
