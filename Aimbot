@@ -27,7 +27,7 @@ local TweenService = game:GetService("TweenService")
 local UISettings = {
     TabWidth = 160,
     Size = { 580, 460 },
-    Theme = "VSC Dark High Contrast",
+    Theme = "Rose",
     Acrylic = false,
     Transparency = true,
     MinimizeKey = "RightShift",
@@ -278,8 +278,8 @@ end)
 
 do
     local Window = Fluent:CreateWindow({
-        Title = string.format("%s <b><i>%s</i></b>", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"), #Status > 0 and Status or "🔥FREE🔥"),
-        SubTitle = "By @ttwiz_z",
+        Title = string.format("%s <b><i>%s</i></b>", string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist"), #Status > 0 and Status or "🔥FREE🔥"),
+        SubTitle = "By JIM_R778",
         TabWidth = UISettings.TabWidth,
         Size = UDim2.fromOffset(table.unpack(UISettings.Size)),
         Theme = UISettings.Theme,
@@ -292,7 +292,7 @@ do
     Window:SelectTab(1)
 
     Tabs.Aimbot:AddParagraph({
-        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist")),
         Content = "✨Universal Aim Assist✨\nBy JIM_R778"
     })
 
@@ -431,7 +431,7 @@ do
             Configuration.AimPartDropdownValues = {}
             AimPartDropdown:SetValues(Configuration.AimPartDropdownValues)
             Window:Dialog({
-                Title = string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"),
+                Title = string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist"),
                 Content = Items == 0 and "Nothing has been cleared!" or Items == 1 and "1 Item has been cleared!" or string.format("%s Items have been cleared!", Items),
                 Buttons = {
                     {
@@ -539,7 +539,7 @@ do
     Tabs.Bots = Window:AddTab({ Title = "Bots", Icon = "bot" })
 
     Tabs.Bots:AddParagraph({
-        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist")),
         Content = "✨Universal Aim Assist✨\nBy JIM_R778"
     })
 
@@ -640,7 +640,7 @@ do
             Configuration.SpinPartDropdownValues = {}
             SpinPartDropdown:SetValues(Configuration.SpinPartDropdownValues)
             Window:Dialog({
-                Title = string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"),
+                Title = string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist"),
                 Content = Items == 0 and "Nothing has been cleared!" or Items == 1 and "1 Item has been cleared!" or string.format("%s Items have been cleared!", Items),
                 Buttons = {
                     {
@@ -697,7 +697,7 @@ do
     Tabs.Checks = Window:AddTab({ Title = "Checks", Icon = "list-checks" })
 
     Tabs.Checks:AddParagraph({
-        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist")),
         Content = "✨Universal Aim Assist✨\nBy JIM_R778"
     })
 
@@ -897,7 +897,7 @@ do
             local Items = #Configuration.IgnoredPlayers
             IgnoredPlayersDropdown:SetValue({})
             Window:Dialog({
-                Title = string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"),
+                Title = string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist"),
                 Content = Items == 0 and "Nothing has been deselected!" or Items == 1 and "1 Item has been deselected!" or string.format("%s Items have been deselected!", Items),
                 Buttons = {
                     {
@@ -924,7 +924,7 @@ do
             Configuration.IgnoredPlayersDropdownValues = Cache
             IgnoredPlayersDropdown:SetValues(Configuration.IgnoredPlayersDropdownValues)
             Window:Dialog({
-                Title = string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"),
+                Title = string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist"),
                 Content = Items == 0 and "Nothing has been cleared!" or Items == 1 and "1 Item has been cleared!" or string.format("%s Items have been cleared!", Items),
                 Buttons = {
                     {
@@ -1000,7 +1000,7 @@ do
             local Items = #Configuration.TargetPlayers
             TargetPlayersDropdown:SetValue({})
             Window:Dialog({
-                Title = string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"),
+                Title = string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist"),
                 Content = Items == 0 and "Nothing has been deselected!" or Items == 1 and "1 Item has been deselected!" or string.format("%s Items have been deselected!", Items),
                 Buttons = {
                     {
@@ -1027,7 +1027,7 @@ do
             Configuration.TargetPlayersDropdownValues = Cache
             TargetPlayersDropdown:SetValues(Configuration.TargetPlayersDropdownValues)
             Window:Dialog({
-                Title = string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"),
+                Title = string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist"),
                 Content = Items == 0 and "Nothing has been cleared!" or Items == 1 and "1 Item has been cleared!" or string.format("%s Items have been cleared!", Items),
                 Buttons = {
                     {
@@ -1038,23 +1038,13 @@ do
         end
     })
 
-    local PremiumChecksSection = Tabs.Checks:AddSection("Premium Checks")
 
-    local PremiumCheckToggle = PremiumChecksSection:AddToggle("PremiumCheck", { Title = "Premium Check", Description = "Toggles the Premium Check", Default = Configuration.PremiumCheck })
-    PremiumCheckToggle:OnChanged(function(Value)
-        Configuration.PremiumCheck = Value
-    end)
-
-    PremiumChecksSection:AddParagraph({
-        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
-        Content = "✨Universal Aim Assist✨\nBy JIM_R778"
-    })
 
     if DEBUG or getfenv().Drawing and getfenv().Drawing.new then
         Tabs.Visuals = Window:AddTab({ Title = "Visuals", Icon = "box" })
 
         Tabs.Visuals:AddParagraph({
-        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist")),
         Content = "✨Universal Aim Assist✨\nBy JIM_R778"
         })
 
@@ -1296,7 +1286,7 @@ do
     Tabs.Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 
     Tabs.Settings:AddParagraph({
-        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+        Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist")),
         Content = "✨Universal Aim Assist✨\nBy JIM_R778"
     })
 
@@ -1401,7 +1391,7 @@ do
             UISettings.RenderingMode = Value
             InterfaceManager:ExportSettings()
             Window:Dialog({
-                Title = string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"),
+                Title = string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist"),
                 Content = "Changes will take effect after the Restart!",
                 Buttons = {
                     {
@@ -1582,53 +1572,6 @@ do
         ShowWarning = true
     end
 
-    local DiscordWikiSection = Tabs.Settings:AddSection("Discord & Wiki")
-
-    if getfenv().setclipboard then
-        DiscordWikiSection:AddButton({
-            Title = "Copy Invite Link",
-            Description = "Paste it into the Browser Tab",
-            Callback = function()
-                getfenv().setclipboard("https://twix.cyou/pix")
-                Window:Dialog({
-                    Title = string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"),
-                    Content = "Invite Link has been copied to the Clipboard!",
-                    Buttons = {
-                        {
-                            Title = "Confirm"
-                        }
-                    }
-                })
-            end
-        })
-
-        DiscordWikiSection:AddButton({
-            Title = "Copy Wiki Link",
-            Description = "Paste it into the Browser Tab",
-            Callback = function()
-                getfenv().setclipboard("https://moderka.org/Open-Aimbot")
-                Window:Dialog({
-                    Title = string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot"),
-                    Content = "Wiki Link has been copied to the Clipboard!",
-                    Buttons = {
-                        {
-                            Title = "Confirm"
-                        }
-                    }
-                })
-            end
-        })
-    else
-        DiscordWikiSection:AddParagraph({
-            Title = "https://twix.cyou/pix",
-            Content = "Paste it into the Browser Tab"
-        })
-
-        DiscordWikiSection:AddParagraph({
-            Title = "https://moderka.org/Open-Aimbot",
-            Content = "Paste it into the Browser Tab"
-        })
-    end
 
     if UISettings.ShowWarnings then
         if DEBUG then
@@ -1644,7 +1587,7 @@ do
         elseif ShowWarning then
             Window:Dialog({
                 Title = "Warning",
-                Content = string.format("Your Software does not support all the Features of %s 🔥Best Aim Assist🔥!", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+                Content = string.format("Your Software does not support all the Features of %s 🔥Best Aim Assist🔥!", string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist")),
                 Buttons = {
                     {
                         Title = "Confirm"
@@ -1653,7 +1596,7 @@ do
             })
         else
             Window:Dialog({
-                Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+                Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist")),
                 Content = "✨Universal Aim Assist✨ – By JIM_R778",
                 Buttons = {
                     {
@@ -1671,9 +1614,9 @@ end
 local function Notify(Message)
     if Fluent and typeof(Message) == "string" then
         Fluent:Notify({
-            Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+            Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Best Aim Assist")),
             Content = Message,
-            SubContent = "By @ttwiz_z",
+            SubContent = "By JIM_R778",
             Duration = 1.5
         })
     end
