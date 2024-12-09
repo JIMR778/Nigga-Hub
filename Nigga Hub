@@ -21,33 +21,24 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/ref
 end)
 
 
-
-
-
-
+-- FullBright
 MainSection:NewButton("FullBright", "You se better when is dark", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/FullBright"))()
 end)
 
+-- Monkey Hub
 MainSection:NewButton("Monkey Hub", "You get Monkey Hub", function()
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/orca/master/public/latest.lua"))()
 end)
 
 
 
-
-
-
-
-
-
-
 -- Project Delta
-local Main2 = Window:NewTab("Project Delta")
-local Main2Section = Main2:NewSection("Project Delta")
+local ProjectDelta = Window:NewTab("Project Delta")
+local PDSection = ProjectDelta:NewSection("Project Delta")
 
 
-Main2Section:NewButton("Swimhub", "you get swimhub", function()
+PDSection:NewButton("Swimhub", "you get swimhub", function()
 getgenv().key = "0c88b6d83aaff67d07db731711a1013fc5b0bf28707701c14aac536955eec9d1"
 loadstring(game:HttpGet("https://api.swimhub.xyz/loader.lua"))()
 end)
@@ -55,7 +46,7 @@ end)
 
 
 
-Main2Section:NewButton("BBC Hub", "you get BBC Hub", function()
+PDSection:NewButton("BBC Hub", "you get BBC Hub", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/main/BBC%20Hub"))()
 end)
 
@@ -63,7 +54,7 @@ end)
 
 
 
-Main2Section:NewButton("No Recoil", "You get No Recoil", function()
+PDSection:NewButton("No Recoil", "You get No Recoil", function()
 local ammo = game.ReplicatedStorage.AmmoTypes
 
 for i,v in pairs(ammo:GetChildren()) do
@@ -76,7 +67,7 @@ end)
 
 
 
-Main2Section:NewButton("Inventory Viewer", "Look to peoples inventory with x", function()
+PDSection:NewButton("Inventory Viewer", "Look to peoples inventory with x", function()
 pcall(function()
     getgenv().inventoryviewer = nil
 end)
@@ -199,7 +190,7 @@ end)
 
 
 
-Main2Section:NewButton("Bring people", "Brings people", function()
+PDSection:NewButton("Bring people", "Brings people", function()
 pcall(function()
     getgenv().hhhhhhh = nil
 end)
