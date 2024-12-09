@@ -1644,7 +1644,7 @@ do
         elseif ShowWarning then
             Window:Dialog({
                 Title = "Warning",
-                Content = string.format("Your Software does not support all the Features of %s 🔥FREE🔥!", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+                Content = string.format("Your Software does not support all the Features of %s 🔥Best Aim Assist🔥!", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
                 Buttons = {
                     {
                         Title = "Confirm"
@@ -1653,8 +1653,8 @@ do
             })
         else
             Window:Dialog({
-                Title = string.format("%s 💫PREMIUM💫", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
-                Content = "✨Upgrade to unlock all Options✨ – Contact @ttwiz_z via Discord to buy",
+                Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+                Content = "✨Universal Aim Assist✨ – By JIM_R778",
                 Buttons = {
                     {
                         Title = "Confirm"
@@ -1671,7 +1671,7 @@ end
 local function Notify(Message)
     if Fluent and typeof(Message) == "string" then
         Fluent:Notify({
-            Title = string.format("%s 🔥FREE🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
+            Title = string.format("%s 🔥Best Aim Assist🔥", string.format(MonthlyLabels[os.date("*t").month], "Open Aimbot")),
             Content = Message,
             SubContent = "By @ttwiz_z",
             Duration = 1.5
@@ -1679,7 +1679,7 @@ local function Notify(Message)
     end
 end
 
-Notify("✨Upgrade to unlock all Options✨")
+Notify("✨Universal Aim Assist✨")
 
 
 --! Fields Handler
