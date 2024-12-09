@@ -56,7 +56,7 @@ end)
 
 -- Inventory Viewer
 PDSection:NewButton("Inventory Viewer", "Look to peoples inventory with x", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/Inventory%20Viewer"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/Nigga-Hub/Inventory%20Viewer"))()
 end)
 
 -- Bring people
