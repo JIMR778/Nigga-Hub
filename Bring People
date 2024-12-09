@@ -1,0 +1,77 @@
+pcall(function()
+    getgenv().hhhhhhh = nil
+end)
+
+getgenv().hhhhhhh = {}
+local Environment = getgenv().hhhhhhh
+
+local inCamera = workspace.CurrentCamera
+local inRunService = game:GetService("RunService")
+local inUIS = game:GetService("UserInputService")
+local inRepStorage = game:GetService("ReplicatedStorage")
+local inEntities = game:GetService("Players")
+local inLocalPlayer = inEntities.LocalPlayer
+local inMouse = inLocalPlayer:GetMouse()
+
+local PlayersFolder = inRepStorage.Players
+
+local Title = [[Brickmane]]
+local Desc = [[Fuck Campers]]
+
+Environment.Settings = {
+    Enabled = false,
+    TriggerKey = 'G',
+    Radius = 2000
+}
+
+inUIS.InputBegan:Connect(function(Input, process)
+    if process then return end
+
+    if Input.KeyCode == Enum.KeyCode[Environment.Settings.TriggerKey] then
+        Environment.Settings.Enabled = not Environment.Settings.Enabled
+    end
+end)
+
+local function LOADINSHIT()
+    inRunService.RenderStepped:Connect(function()
+        local dist = 500
+        local closest_character = nil
+    
+        if Environment.Settings.Enabled then
+            for _,v in next , inEntities:GetChildren() do
+                pcall(function()
+                    if v ~= inLocalPlayer and
+                    v ~= nil and
+                    v.Character:FindFirstChild('HumanoidRootPart') and
+                    v.Character:FindFirstChild('Humanoid') and
+                    v.Character.Humanoid.Health > 0 then
+                        local char = v.Character
+                        local char_part_pos, onscreen = inCamera:WorldToViewportPoint(char.HumanoidRootPart.Position)
+        
+                        if onscreen then
+                            local magnitude = (Vector2.new(inMouse.X, inMouse.Y) - Vector2.new(char_part_pos.X, char_part_pos.Y)).Magnitude
+        
+                            if magnitude < dist and magnitude < Environment.Settings.Radius then
+                                dist = magnitude
+                                closest_character = char
+                            end
+                        end
+                    end
+                end)
+            end
+
+            if closest_character ~= nil and
+            closest_character.Parent and
+            closest_character:FindFirstChild('HumanoidRootPart') and
+            closest_character:FindFirstChild('Humanoid') and
+            closest_character.Humanoid.Health > 0 then  
+                local cameraPosition = inCamera.CFrame.Position
+                local targetPosition = cameraPosition + (game.Workspace.CurrentCamera.CFrame.LookVector * 9.5)
+                targetPosition = Vector3.new(targetPosition.X, targetPosition.Y - 1.6, targetPosition.Z) 
+                closest_character.HumanoidRootPart.CFrame = CFrame.new(targetPosition, cameraPosition)
+            end
+        end
+    end)    
+end
+
+LOADINSHIT(); print('TP PLR 2 U LOADED', Title ,Desc)
