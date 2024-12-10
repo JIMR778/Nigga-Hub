@@ -4,8 +4,8 @@ local Window = Library.CreateLib("Negger hub", "Sentinel")
 
 
 -- Universal
-local Universal = Window:NewTab("Main")
-local UniversalSection = Universal:NewSection("Main")
+local Universal = Window:NewTab("Universal")
+local UniversalSection = Universal:NewSection("Universal")
 
 -- Aimlock
 UniversalSection:NewButton("AimLock", "You get AimLock", function()
