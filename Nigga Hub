@@ -7,8 +7,8 @@ local Window = Library.CreateLib("Negger hub", "Sentinel")
 local Universal = Window:NewTab("Main")
 local UniversalSection = Universal:NewSection("Main")
 
--- Aimlock
-UniversalSection:NewButton("AimLock", "You get AimLock", function()
+-- Aimbot
+UniversalSection:NewButton("Aimbot", "You get Aimbot", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/Aimbot"))()
 end)
 
