@@ -9,7 +9,7 @@ local UniversalSection = Universal:NewSection("Main")
 
 -- Aimlock
 UniversalSection:NewButton("AimLock", "You get AimLock", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/Aimbot"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/Nigga-Hub/Aimbot"))()
 end)
 
 -- Esp
