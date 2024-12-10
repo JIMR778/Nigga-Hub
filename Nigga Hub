@@ -7,8 +7,8 @@ local Window = Library.CreateLib("Negger hub", "Sentinel")
 local Universal = Window:NewTab("Main")
 local UniversalSection = Universal:NewSection("Main")
 
--- Aimbot
-UniversalSection:NewButton("Aimbot", "You get Aimbot", function()
+-- Aimlock
+UniversalSection:NewButton("AimLock", "You get AimLock", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/Aimbot"))()
 end)
 
@@ -118,18 +118,12 @@ end)
 
 
 
--- 
-local Section = Random:NewSection("")
 
-RandomSection:NewButton("", "", function()
+-- Settings
+local Settings = Window:NewTab("Settings")
 
-end)
+local SettingsSection = Settings:NewSection("Settings")
 
-
-
--- 
-local Section = Random:NewSection("")
-
-RandomSection:NewButton("", "", function()
-
+SettingsSection:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.RightShift, function()
+	Library:ToggleUI()
 end)
