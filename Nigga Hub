@@ -3,32 +3,32 @@ local Window = Library.CreateLib("Negger hub", "Sentinel")
 
 
 
--- Main
-local Main = Window:NewTab("Main")
-local MainSection = Main:NewSection("Main")
+-- Universal
+local Universal = Window:NewTab("Main")
+local UniversalSection = Universal:NewSection("Main")
 
 -- Aimlock
-MainSection:NewButton("AimLock", "You get AimLock", function()
+UniversalSection:NewButton("AimLock", "You get AimLock", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/Aimbot"))()
 end)
 
 -- Esp
-MainSection:NewButton("ESP", "click to get esp", function()
+UniversalSection:NewButton("ESP", "click to get esp", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/Esp"))()
 end)
 
 -- Zoom In
-MainSection:NewButton("Zoom In", "You can zoom in with c", function()
+UniversalSection:NewButton("Zoom In", "You can zoom in with c", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/Zoom%20In"))()
 end)
 
 -- FullBright
-MainSection:NewButton("FullBright", "You se better when is dark", function()
+UniversalSection:NewButton("FullBright", "You se better when is dark", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/FullBright"))()
 end)
 
 -- Monkey Hub
-MainSection:NewButton("Monkey Hub", "You get Monkey Hub", function()
+UniversalSection:NewButton("Monkey Hub", "You get Monkey Hub", function()
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/orca/master/public/latest.lua"))()
 end)
 
@@ -41,7 +41,7 @@ local PDSection = ProjectDelta:NewSection("Project Delta")
 -- Swimhub
 PDSection:NewButton("Swimhub", "you get swimhub", function()
 getgenv().key = "0c88b6d83aaff67d07db731711a1013fc5b0bf28707701c14aac536955eec9d1"
-loadstring(game:HttpGet("https://api.swimhub.xyz/loader.lua"))()
+loadstring(game:HttpGet("https://swimhub.xyz/loader.lua"))()
 end)
 
 -- BBC Hub
@@ -64,11 +64,72 @@ PDSection:NewButton("Bring people", "Brings people", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/Bring%20People"))()
 end)
 
+
+
+-- Random
+local Random = Window:NewTab("Random")
+
+
+-- Rise of Nations
+local RiseofNationsSection = Random:NewSection("Rise of Nations")
+
+RiseofNationsSection:NewLabel("⬇key: SubscribingWontHurt⬇")
+
+RiseofNationsSection:NewButton("Rise of Nations GUI", "Get Auto Farm", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Jayxen0001/Dark-Cipher/main/DarkCipher.lua"))()
+end)
+
+
+
 -- DrivingEmpire
-local DrivingEmpire = Window:NewTab("DrivingEmpire")
-local DrivingEmpireSection = DrivingEmpire:NewSection("DrivingEmpire")
+local DrivingEmpireSection = Random:NewSection("DrivingEmpire")
 
 -- Auto Farm
 DrivingEmpireSection:NewButton("Auto Farm", "Get Auto Farm", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/main/drivingempire", true))()
+end)
+
+
+
+-- Murder Mystery 2
+local MMSection = Random:NewSection("Murder Mystery 2")
+
+MMSection:NewButton("Murder Mystery 2", "get Murder Mystery 2 script", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Au0yX/Community/main/XhubMM2"))()
+end)
+
+
+
+-- Fish
+local FishSection = Random:NewSection("Fish")
+
+FishSection:NewButton("Fish Script", "get Fish script", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+end)
+
+
+
+-- Gym League
+local GymLeagueSection = Random:NewSection("Gym League")
+
+GymLeagueSection:NewButton("Gym League GUI", "get Gym League GUI", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kiciahook/kiciahook/refs/heads/main/loader.lua"))()
+end)
+
+
+
+-- 
+local Section = Random:NewSection("")
+
+RandomSection:NewButton("", "", function()
+
+end)
+
+
+
+-- 
+local Section = Random:NewSection("")
+
+RandomSection:NewButton("", "", function()
+
 end)
