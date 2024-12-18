@@ -84,8 +84,7 @@ end)
 -- DrivingEmpire
 local DrivingEmpireSection = Random:NewSection("DrivingEmpire")
 
--- Auto Farm
-DrivingEmpireSection:NewButton("Auto Farm", "Get Auto Farm", function()
+DrivingEmpireSection:NewButton("DrivingEmpire AutoFarm", "Get Auto DrivingEmpire Farm", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/main/drivingempire", true))()
 end)
 
@@ -114,6 +113,15 @@ local GymLeagueSection = Random:NewSection("Gym League")
 
 GymLeagueSection:NewButton("Gym League GUI", "get Gym League GUI", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/kiciahook/kiciahook/refs/heads/main/loader.lua"))()
+end)
+
+
+
+-- TaxiBoss 
+local TaxiBossSection = Random:NewSection("TaxiBoss")
+
+TaxiBossSection:NewButton("TaxiBoss AutoFarm", "get TaxiBoss AutoFarm", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/main/Taxi%20Boss", true))()
 end)
 
 
