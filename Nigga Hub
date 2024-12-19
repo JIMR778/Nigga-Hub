@@ -27,6 +27,11 @@ UniversalSection:NewButton("FullBright", "You se better when is dark", function(
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JIMR778/Nigga-Hub/refs/heads/main/FullBright"))()
 end)
 
+-- Anti Afk
+UniversalSection:NewButton("Anti Afk", "get not kicked for being afk", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KazeOnTop/Rice-Anti-Afk/main/Wind", true))()
+end)
+
 -- Monkey Hub
 UniversalSection:NewButton("Monkey Hub", "You get Monkey Hub", function()
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/orca/master/public/latest.lua"))()
